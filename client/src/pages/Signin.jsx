@@ -20,7 +20,7 @@ const Signup = () => {
           },
         }
       );
-   
+
       localStorage.setItem("token", response.data.token);
 
       if (response.status === 200 || response.status === 201) {
@@ -81,7 +81,7 @@ const Signup = () => {
               type="submit"
               className="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-300 ease-in-out"
             >
-              Sign Up
+              Sign In
             </button>
           </div>
           <div className="text-center">
