@@ -10,9 +10,6 @@ import commentRouter from "./routes/comment.routes.js";
 dotenv.config();
 const app = express();
 
-
-
-
 // middlewares
 app.use(cors());
 app.use(express.json());
@@ -20,11 +17,11 @@ app.use("/api", authRouter);
 app.use("/api", postRouter);
 app.use("/api", commentRouter);
 
-app.get("/", (req, res) => res.send("runnningngnngdkhjhs"));
+app.get("/", (req, res) => res.send("server running"));
 // mongodb connection
 
 mongoose
-  .connect(process.env.MONGO_uri)
+  .connect(process.env.MONGO_URI)
   .then(
     app.listen(process.env.PORT, () =>
       console.log(`port runnning on ${process.env.PORT}`)
