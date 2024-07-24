@@ -8,6 +8,7 @@ import Post from "./pages/Post";
 import CreatePost from "./pages/CreatePost";
 import Profile from "./pages/Profile";
 import EditPost from "./pages/EditPost";
+import PrivateRoutes from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -15,12 +16,14 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/" element={<LandingPage />} />
-        <Route path="/posts/:id" element={<Post />} />
-        <Route path="/create-post" element={<CreatePost />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/editpost/:id" element={<EditPost />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/posts/:id" element={<Post />} />
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/editpost/:id" element={<EditPost />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

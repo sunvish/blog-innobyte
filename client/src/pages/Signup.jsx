@@ -6,11 +6,14 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [responseMessage, setResponseMessage] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = { username, email, password }; 
+    const formData = { username, email, password };
+
     try {
       const response = await axios.post(
         "http://localhost:8999/api/signup",
@@ -21,18 +24,23 @@ const Signup = () => {
           },
         }
       );
-      console.log(response);
 
+      // Assuming the message is part of the response data
       if (response.status === 200 || response.status === 201) {
-        
+        setResponseMessage(
+          response.data.message || "Sign up successful! Redirecting..."
+        );
         setUsername("");
         setEmail("");
         setPassword("");
         navigate("/signin");
       }
     } catch (error) {
+      setError(
+        error.response?.data?.message ||
+          "There was an error with the sign-up process. Please try again."
+      );
       console.error("There was an error!", error);
-      
     }
   };
 
@@ -105,6 +113,14 @@ const Signup = () => {
               Sign Up
             </button>
           </div>
+          {responseMessage && (
+            <div className="mb-4 text-center text-green-400">
+              {responseMessage}
+            </div>
+          )}
+          {error && (
+            <div className="mb-4 text-center text-red-400">{error}</div>
+          )}
           <div className="text-center">
             <Link
               to="/signin"

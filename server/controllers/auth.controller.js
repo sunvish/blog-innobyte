@@ -6,13 +6,11 @@ export const signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    
     const isExistingUser = await userModel.findOne({ email });
     if (isExistingUser) {
       return res.status(400).json({ message: "Email already registered" });
     }
 
-   
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new userModel({
       username,
@@ -20,7 +18,6 @@ export const signup = async (req, res) => {
       password: hashedPassword,
     });
 
-   
     await newUser.save();
 
     res.status(201).json({ message: "User registered successfully" });
@@ -33,7 +30,6 @@ export const signin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    
     const isExistingUser = await userModel.findOne({ email });
     if (!isExistingUser) {
       return res
@@ -48,7 +44,6 @@ export const signin = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Incorrect password" });
     }
-
 
     const token = jwt.sign({ id: isExistingUser._id }, process.env.SECRET_KEY, {
       expiresIn: "1h",

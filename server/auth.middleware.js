@@ -7,6 +7,7 @@ export const authMiddleware = (req, res, next) => {
     res.json({ msg: "not authenticated" });
   }
   const userId = jwt.verify(token, process.env.SECRET_KEY);
+  console.log(userId);
 
   req.userId = userId.id;
   next();
