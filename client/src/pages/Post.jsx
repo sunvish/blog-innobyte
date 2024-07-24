@@ -13,7 +13,7 @@ const Post = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `https://blog-innobyte.onrender.com/getpost/${id}`,
+          `http://localhost:8999/api/getpost/${id}`,
           {
             headers: {
               token: localStorage.getItem("token"),
