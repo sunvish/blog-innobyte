@@ -12,7 +12,7 @@ const editPost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("id", id.id);
+
     try {
       await axios.put(
         `http://localhost:8999/api/editpost/${id.id}`,

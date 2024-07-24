@@ -10,6 +10,9 @@ import commentRouter from "./routes/comment.routes.js";
 dotenv.config();
 const app = express();
 
+
+
+
 // middlewares
 app.use(cors());
 app.use(express.json());

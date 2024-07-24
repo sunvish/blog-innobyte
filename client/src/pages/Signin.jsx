@@ -20,7 +20,7 @@ const Signup = () => {
           },
         }
       );
-      console.log(response);
+   
       localStorage.setItem("token", response.data.token);
 
       if (response.status === 200 || response.status === 201) {

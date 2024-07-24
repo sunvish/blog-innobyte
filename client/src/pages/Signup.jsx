@@ -25,7 +25,7 @@ const Signup = () => {
         }
       );
 
-      // Assuming the message is part of the response data
+      
       if (response.status === 200 || response.status === 201) {
         setResponseMessage(
           response.data.message || "Sign up successful! Redirecting..."
