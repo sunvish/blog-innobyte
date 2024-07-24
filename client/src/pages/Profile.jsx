@@ -8,7 +8,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:8999/api/getuserposts",
+        "https://blog-innobyte.onrender.com/api/getuserposts",
         {
           headers: {
             token: localStorage.getItem("token"),
@@ -24,12 +24,15 @@ const Profile = () => {
 
   const deletePost = async (postId) => {
     try {
-      await axios.delete(`http://localhost:8999/api/deletepost/${postId}`, {
-        headers: {
-          token: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-      });
+      await axios.delete(
+        `https://blog-innobyte.onrender.com/api/deletepost/${postId}`,
+        {
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setPosts(posts.filter((post) => post._id !== postId));
     } catch (error) {
       console.error("Failed to delete post:", error);

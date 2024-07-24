@@ -16,7 +16,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8999/api/signup",
+        "https://blog-innobyte.onrender.com/api/signup",
         formData,
         {
           headers: {
@@ -25,7 +25,6 @@ const Signup = () => {
         }
       );
 
-      
       if (response.status === 200 || response.status === 201) {
         setResponseMessage(
           response.data.message || "Sign up successful! Redirecting..."

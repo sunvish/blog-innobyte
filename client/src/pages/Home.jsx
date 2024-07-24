@@ -7,7 +7,7 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8999/api/getposts", {
+      const response = await axios.get("https://blog-innobyte.onrender.com/api/getposts", {
         headers: {
           token: localStorage.getItem("token"),
           "Content-Type": "application/json",

@@ -13,7 +13,7 @@ const Post = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8999/api/getpost/${id}`,
+          `https://blog-innobyte.onrender.com/getpost/${id}`,
           {
             headers: {
               token: localStorage.getItem("token"),
@@ -33,7 +33,7 @@ const Post = () => {
   const fetchComments = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8999/api/getcomments/${id}`,
+        `https://blog-innobyte.onrender.com/api/getcomments/${id}`,
         {
           headers: {
             token: localStorage.getItem("token"),
@@ -51,7 +51,7 @@ const Post = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8999/api/postcomment/${id}`,
+        `https://blog-innobyte.onrender.com/api/postcomment/${id}`,
         { text: newComment },
         {
           headers: {

@@ -14,7 +14,7 @@ const CreatePost = () => {
 
     try {
       await axios.post(
-        "http://localhost:8999/api/createpost",
+        "https://blog-innobyte.onrender.com/api/createpost",
         {
           title,
           body,

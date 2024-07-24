@@ -15,7 +15,7 @@ const editPost = () => {
 
     try {
       await axios.put(
-        `http://localhost:8999/api/editpost/${id.id}`,
+        `https://blog-innobyte.onrender.com/api/editpost/${id.id}`,
         {
           title,
           body,

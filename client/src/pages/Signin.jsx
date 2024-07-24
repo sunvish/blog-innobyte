@@ -12,7 +12,7 @@ const Signup = () => {
     const formData = { email, password };
     try {
       const response = await axios.post(
-        "http://localhost:8999/api/signin",
+        "https://blog-innobyte.onrender.com/api/signin",
         formData,
         {
           headers: {
