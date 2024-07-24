@@ -21,14 +21,13 @@ const Profile = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col">
-      {/* Navigation Bar */}
       <nav className="bg-gray-800 p-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <Link
-            to="/"
+            to="/home"
             className="text-white text-2xl font-bold hover:text-gray-400"
           >
-            Home
+            BlogEra
           </Link>
           <div className="flex space-x-4">
             <Link
@@ -47,9 +46,7 @@ const Profile = () => {
         </div>
       </nav>
 
-    
       <div className="container mx-auto px-4 py-6 flex-grow">
-       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {posts.map((post) => (
             <Link
@@ -80,7 +77,6 @@ const Profile = () => {
           ))}
         </div>
 
-       
         <div className="text-center mb-8">
           <Link to="/create-post">
             <button className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300">

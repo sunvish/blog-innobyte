@@ -5,13 +5,13 @@ export const addComment = async (req, res) => {
   const { text } = req.body;
   const userId = req.userId;
   const postId = req.params.id;
-  console.log(postId);
+ 
 
-  console.log(userId);
+
 
   const user = await userModel.findById({ _id: userId });
   const userName = user.username;
-  console.log(user);
+
 
   try {
     const newComment = new commentModel({ text, postId, userName });

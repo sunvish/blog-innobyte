@@ -7,17 +7,34 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8999/api/getpost", {
-        headers: {
-          token: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.get(
+        "http://localhost:8999/api/getuserposts",
+        {
+          headers: {
+            token: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        }
+      );
       setPosts(response.data);
     };
 
     fetchData();
   }, []);
+
+  const deletePost = async (postId) => {
+    try {
+      await axios.delete(`http://localhost:8999/api/deletepost/${postId}`, {
+        headers: {
+          token: localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      });
+      setPosts(posts.filter((post) => post._id !== postId));
+    } catch (error) {
+      console.error("Failed to delete post:", error);
+    }
+  };
 
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col">
@@ -53,9 +70,8 @@ const Profile = () => {
         <h1 className="text-4xl font-bold mb-8 text-center">Your Blogs</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {posts.map((post) => (
-            <Link
+            <div
               key={post._id}
-              to={`/posts/${post._id}`}
               className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300"
             >
               {post.image && (
@@ -77,7 +93,21 @@ const Profile = () => {
               <p className="text-sm text-gray-500">
                 {new Date(post.createdAt).toLocaleDateString()}
               </p>
-            </Link>
+              <div className="flex space-x-4 mt-4">
+                <Link
+                  to={`/editpost/${post._id}`}
+                  className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transition-colors duration-300"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deletePost(post._id)}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition-colors duration-300"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           ))}
         </div>
 

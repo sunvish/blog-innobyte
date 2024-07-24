@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import Post from "./pages/Post";
 import CreatePost from "./pages/CreatePost";
 import Profile from "./pages/Profile";
+import EditPost from "./pages/EditPost";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/posts/:id" element={<Post />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/editpost/:id" element={<EditPost />} />
       </Routes>
     </BrowserRouter>
   );
